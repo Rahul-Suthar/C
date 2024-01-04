@@ -7,9 +7,9 @@ int main()
 
     scanf("%d",&a);
 
-    int sum = a*a;
+    int square = a*a;
 
-    printf("square is : %d",sum);
+    printf("square is : %d",square);
 
     return 0;
 }
