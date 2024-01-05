@@ -17,6 +17,11 @@ float Equationsolve(int c, int d, int e, int f, int g, int h)
 {
     float A,B;
 
+     // Check if denominator is zero or not to prevent dividing by zero error.
+    if ((d * f - g * c) == 0 || (c * g - f * d) == 0) {
+        printf("The system of equations has no unique solution.");
+    }
+
 // here are the general formulae to find there values ..
 
     A = (d*h - g*e) / (d*f - g*c);
