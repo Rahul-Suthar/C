@@ -3,7 +3,7 @@
 
 /*Here in this code we are taking two equation as 1) aA + bB = w  and 2) xA + yB = v
  
-  by this  two equation we are going to find the values of two constant A & B 
+  by this  two equation we are going to find the values of two variable  A & B 
 */
 
 
@@ -17,18 +17,29 @@ float Equationsolve(int c, int d, int e, int f, int g, int h)
 {
     float A,B;
 
-     // Check if denominator is zero or not to prevent dividing by zero error.
-    if ((d * f - g * c) == 0 || (c * g - f * d) == 0) {
-        printf("The system of equations has no unique solution.");
+    
+    if (d*f == g*c) {
+        if ((d*h == g*e) || (c*h == f*e)) {
+            printf("The system of linear equations have many solutions.\n");
+        }
+        else {
+            printf("The system of linear equation have no solutions.\n");
+        }
     }
+    else{
+        if (d*f != g*c) {
+            printf("The system of linear equation have Unique solutions.\n");
+            
+            A = ((d*h - g*e))*1.0 / ((d*f - g*c))*1.0 ;
+            B = ((c*h - f*e))*1.0 / ((c*g - f*d))*1.0 ;
+            
+            printf("A is = %f\nB is = %f",A,B);
+        }
+        else{
+            printf("Error\n");
+        }
 
-// here are the general formulae to find there values ..
-
-    A = (d*h - g*e) / (d*f - g*c);
-    B = (c*h - f*e) / (c*g - f*d);   
-
-    printf("A is = %f\nB is = %f",A,B);
-
+    }
     return 0;
 }
 
