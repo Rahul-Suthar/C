@@ -47,32 +47,32 @@ float Equationsolve(int c, int d, int e, int f, int g, int h)
 int main()
 {
 
-// taking six constants  as there are two equations we need three-three constants per equation ..
+// taking six constants as there are two equations we need three-three constants per equation ..
 
 
     int a,b,w,x,y,v;
 
-// Taking  input for the constant of first equation named a ,b and w
+// Taking input for the constant of first equation named a ,b and w
 
 
     printf("Enter value of constant a , b and w : ");
     scanf("%d%d%d",&a,&b,&w);
 
 
-// It will gonna print the  first equation ..
+// It will print the first equation ..
 
 
     printf("Equation first is %dA + %dB = %d\n",a,b,w);
 
 
-// Taking  input for the constant of second equation named x, y and v
+// Taking input for the constant of second equation named x, y and v
 
 
     printf("Enter value of constant x , y and v  : ");
     scanf("%d%d%d",&x,&y,&v);
 
 
-// It will gonna print the second equation ..
+// It will print the second equation ..
 
 
     printf("Equation second is %dA + %dB = %d\n",x,y,v);
