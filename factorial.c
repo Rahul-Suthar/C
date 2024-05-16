@@ -1,27 +1,27 @@
-#include<stdio.h>
-#include<math.h>
+#include <stdio.h>
+#include <math.h>
 
 int factorial(int n)
 {
-    int fac=1,i;
+    int fac = 1, i;
 
-    for (i=n;i>0;i--){
+    for (i = n; i > 0; i--)
+    {
 
-        fac = fac*i;
+        fac = fac * i;
     }
 
-    printf("Factorial of %d is : %d",n,fac);
-    
-    return 0 ;
+    printf("Factorial of %d is : %d", n, fac);
 
+    return 0;
 }
 
-int main ()
+int main()
 {
-    int n ;
+    int n;
 
     printf("Enter n : ");
-    scanf("%d",&n);
+    scanf("%d", &n);
 
     factorial(n);
 

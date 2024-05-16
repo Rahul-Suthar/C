@@ -1,15 +1,15 @@
-#include<stdio.h>
+#include <stdio.h>
 
 int main()
 {
-    int N,sum;
+    int N, sum;
 
     printf("Enter any integer :");
-    scanf("%d",&N);
+    scanf("%d", &N);
 
-    sum = N*(N+1)/2;
+    sum = N * (N + 1) / 2;
 
-    printf("Sum of Natural no. upto %d is : %d",N,sum);
+    printf("Sum of Natural no. upto %d is : %d", N, sum);
 
     return 0;
 }
