@@ -1,58 +1,69 @@
-#include <stdio.h>
+#include<stdio.h>
+#include<stdlib.h>
 
-int partition(int arr[], int s, int e)
-{
-    int x = arr[e];
-    int i = s;
-
-    for (int j = s; j < e; j++)
-    {
-        if (x >= arr[j])
-        {
-            i++;
-            int temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
-        }
-    }
-    int temp = arr[i + 1];
-    arr[i + 1] = arr[e];
-    arr[e] = temp;
-    return (i + 1);
-}
-
-void QuickSort(int arr[], int s, int e)
-{
-    if (s < e)
-    {
-        int p = partition(arr, s, e);
-
-        QuickSort(arr, s, p - 1);
-        QuickSort(arr, p + 1, e);
-    }
-}
+void quicksort(int *arr,int s, int e);
+int partition(int *arr, int s, int e);
 
 int main()
 {
-    int size;
-    printf("Enter size: ");
-    scanf("%d", &size);
+    int n;
+    printf("enter size of array : ");
+    scanf("%d",&n);
 
-    int arr[size];
-    printf("Enter elements of array: ");
+    int *arr = (int *)calloc(n,sizeof(int));
+    printf("Enter array's element : ");
 
-    for (int k = 0; k < size; k++)
-    {
-        scanf("%d", &arr[k]);
+    for(int i=0;i<n;i++){
+        scanf("%d",&arr[i]);
     }
 
-    QuickSort(arr, 0, size - 1);
+    quicksort(arr,0,n-1);
 
-    printf("Sorted array: ");
-    for (int k = 0; k < size; k++)
-    {
-        printf("%d ", arr[k]);
+    printf("Sorted array is : ");
+
+    for(int i=0;i<n;i++){
+        printf("%d ",*(arr+i));
     }
+
+    free(arr);
 
     return 0;
+}
+
+void quicksort(int *arr, int s, int e){
+
+    if(s<e){
+        int loc = partition(arr,s,e);
+        quicksort(arr,s,loc-1);
+        quicksort(arr,loc+1,e);
+    }
+}
+
+int partition(int *arr, int s, int e){
+    int p = arr[s];
+    int start = s+1;
+    int end = e;
+
+    while(start<=end){
+        // to  find element larger than pivot
+        while(arr[start] <= p){
+            start++;
+        }
+        // to find element smaller than pivot
+        while(arr[end] > p){
+            end--;
+        }
+        if(start<end){
+            //  to swap start and end elements
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+        }
+    }
+
+    int swap = arr[s];
+    arr[s] = arr[end];
+    arr[end] = swap;
+
+    return end;
 }
