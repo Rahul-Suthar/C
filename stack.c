@@ -1,4 +1,4 @@
-// Implimantation of stack :- woeks on the principal of LILO :- last in last out
+// Implimantation of stack :- woeks on the principal of LIFO :- last in first out
 
 #include<stdio.h>
 #include<stdlib.h>
