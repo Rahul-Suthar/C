@@ -12,6 +12,7 @@ int main()
     struct Node *temp = NULL;
     struct Node *head = NULL;
 
+//input for node's value ;
     for (int i = 0; i < n; i++)
     {
         h[i] = (struct Node *)malloc(sizeof(struct Node));
@@ -115,6 +116,7 @@ int main()
         break;
     }
 
+// free memory allocated for nodes using malloc
     for (int i = 0; i < n; i++)
     {
         free(h[i]);
