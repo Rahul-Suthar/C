@@ -122,9 +122,6 @@ int main()
         free(h[i]);
     }
 
-    free(head);
-    free(temp);
-
     free(h);
 
     return 0;

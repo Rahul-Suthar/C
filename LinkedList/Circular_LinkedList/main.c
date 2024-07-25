@@ -12,15 +12,17 @@ int main()
     struct Node *temp = NULL;
     struct Node *head = NULL;
 
+    int i=0;
+
+
 //input for node's value ;
-    for (int i = 0; i < n; i++)
+    for (int j = 0; j < n; j++)
     {
         h[i] = (struct Node *)malloc(sizeof(struct Node));
 
         printf("data : ");
         scanf("%d", &(h[i]->data));
         h[i]->next = NULL;
-        h[i]->prev = NULL;
 
         if (head == NULL)
         {
@@ -29,15 +31,17 @@ int main()
         else
         {
             temp->next = h[i];
-            h[i]->prev = temp;
         }
 
         temp = h[i];
+        i++;
     }
+
+    temp->next = head;
 
     traverse(head);
 
-    int choice, c;
+    int choice, c, index;
     printf("Enter your choice to insert(1) / delete(2) : ");
     scanf("%d", &choice);
 
@@ -47,7 +51,7 @@ int main()
         printf("At start(1) / index(2) / end(3) : ");
         scanf(" %d", &c);
 
-        int data, index;
+        int data;
 
         switch (c)
         {
@@ -55,7 +59,7 @@ int main()
             printf("Enter data: ");
             scanf("%d", &data);
 
-            head = insertAtBeginning(head, data);
+            head = insertAtIndex(head, data,0);
             traverse(head);
             break;
 
@@ -63,7 +67,7 @@ int main()
             printf("Enter data and index: ");
             scanf("%d %d", &data, &index);
 
-            insertAtIndex(head, data, index);
+            head = insertAtIndex(head, data, index);
             traverse(head);
             break;
 
@@ -71,7 +75,7 @@ int main()
             printf("Enter data: ");
             scanf("%d", &data);
 
-            insertAtEnd(head, data);
+            head = insertAtIndex(head, data,n);
             traverse(head);
             break;
 
@@ -89,7 +93,7 @@ int main()
         switch (c)
         {
         case 1:
-            head = deleteAtBeginning(head);
+            head = deleteAtIndex(head,1);
             traverse(head);
             break;
 
@@ -97,12 +101,12 @@ int main()
             printf("Enter index : ");
             scanf("%d", &index);
 
-            deleteAtIndex(head,index);
+            head = deleteAtIndex(head,index);
             traverse(head);
             break;  
 
         case 3:
-            deleteAtEnd(head);
+            head = deleteAtIndex(head,n);
             traverse(head);
             break;
 

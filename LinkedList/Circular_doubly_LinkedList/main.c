@@ -5,19 +5,19 @@
 int main()
 {
     int n;
-    printf("Numbers of Nodes to create : ");
+    printf("Number of Nodes to create: ");
     scanf("%d", &n);
 
     struct Node **h = (struct Node **)malloc(n * sizeof(struct Node *));
     struct Node *temp = NULL;
     struct Node *head = NULL;
 
-//input for node's value ;
+    // Input for node's value
     for (int i = 0; i < n; i++)
     {
         h[i] = (struct Node *)malloc(sizeof(struct Node));
 
-        printf("data : ");
+        printf("Data: ");
         scanf("%d", &(h[i]->data));
         h[i]->next = NULL;
         h[i]->prev = NULL;
@@ -35,43 +35,42 @@ int main()
         temp = h[i];
     }
 
+    temp->next = head;
+    head->prev = temp;
+
     traverse(head);
 
-    int choice, c;
-    printf("Enter your choice to insert(1) / delete(2) : ");
+    int choice, c, index;
+    printf("Enter your choice to insert(1) / delete(2): ");
     scanf("%d", &choice);
 
     switch (choice)
     {
     case 1:
-        printf("At start(1) / index(2) / end(3) : ");
-        scanf(" %d", &c);
+        printf("At start(1) / index(2) / end(3): ");
+        scanf("%d", &c);
 
-        int data, index;
+        int data;
+
+        printf("Enter data: ");
+        scanf("%d", &data);
 
         switch (c)
         {
         case 1:
-            printf("Enter data: ");
-            scanf("%d", &data);
-
-            head = insertAtBeginning(head, data);
+            head = insertAtIndex(head, data, 0);
             traverse(head);
             break;
 
         case 2:
-            printf("Enter data and index: ");
-            scanf("%d %d", &data, &index);
-
-            insertAtIndex(head, data, index);
+            printf("Enter index: ");
+            scanf("%d", &index);
+            head = insertAtIndex(head, data, index);
             traverse(head);
             break;
 
         case 3:
-            printf("Enter data: ");
-            scanf("%d", &data);
-
-            insertAtEnd(head, data);
+            head = insertAtIndex(head, data, n);
             traverse(head);
             break;
 
@@ -79,30 +78,28 @@ int main()
             printf("Invalid choice\n");
             break;
         }
-
         break;
 
     case 2:
-        printf("At start(1) / index(2) / end(3) : ");
-        scanf(" %d", &c);
+        printf("At start(1) / index(2) / end(3): ");
+        scanf("%d", &c);
 
         switch (c)
         {
         case 1:
-            head = deleteAtBeginning(head);
+            head = deleteAtIndex(head, 1);
             traverse(head);
             break;
 
         case 2:
-            printf("Enter index : ");
+            printf("Enter index: ");
             scanf("%d", &index);
-
-            deleteAtIndex(head,index);
+            head = deleteAtIndex(head, index);
             traverse(head);
-            break;  
+            break;
 
         case 3:
-            deleteAtEnd(head);
+            head = deleteAtIndex(head, n); // Corrected end index
             traverse(head);
             break;
 
@@ -110,7 +107,6 @@ int main()
             printf("Invalid choice\n");
             break;
         }
-
         break;
 
     default:
@@ -118,12 +114,11 @@ int main()
         break;
     }
 
-// free memory allocated for nodes using malloc
-    for (int i = 0; i < n; i++)
+    // Free memory allocated for nodes using malloc
+     for (int i = 0; i < n; i++)
     {
         free(h[i]);
     }
-
     free(h);
 
     return 0;
